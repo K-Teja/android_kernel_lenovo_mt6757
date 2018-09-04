@@ -516,6 +516,14 @@ config SRAM
 	  the genalloc API. It is supposed to be used for small on-chip SRAM
 	  areas found on many SoCs.
 
+config LCT_CAPSENOR_PARA
+	bool "Generic capsenor para driver"
+	default n
+	help
+	  ARM Ltd. Versatile Express uses specialised platform configuration
+	  bus. System Configuration interface is one of the possible means
+	  of generating transactions on this bus.
+
 config VEXPRESS_SYSCFG
 	bool "Versatile Express System Configuration driver"
 	depends on VEXPRESS_CONFIG
@@ -524,6 +532,23 @@ config VEXPRESS_SYSCFG
 	  ARM Ltd. Versatile Express uses specialised platform configuration
 	  bus. System Configuration interface is one of the possible means
 	  of generating transactions on this bus.
+
+config UID_CPUTIME
+	bool "Per-UID cpu time statistics"
+	depends on PROFILING
+	help
+	  Per UID based cpu time statistics exported to /proc/uid_cputime
+
+config MOT_UTAG
+       tristate  "Motorola Configuration read/write support "
+       default n
+       help
+         With this option you get read/write access to utag partition via procfs.
+         Content of the entire partition can be checked, separate utags accessed
+         and modified.
+
+         This driver should be built as a module. The module will be called
+         utags.ko.
 
 source "drivers/misc/c2port/Kconfig"
 source "drivers/misc/eeprom/Kconfig"
@@ -537,4 +562,5 @@ source "drivers/misc/mic/Kconfig"
 source "drivers/misc/genwqe/Kconfig"
 source "drivers/misc/echo/Kconfig"
 source "drivers/misc/cxl/Kconfig"
+source "drivers/misc/mediatek/Kconfig"
 endmenu

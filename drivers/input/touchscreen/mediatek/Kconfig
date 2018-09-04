@@ -1,0 +1,69 @@
+#
+# Touchscreen driver configuration
+#
+menuconfig INPUT_TOUCHSCREEN
+	bool "Touchscreens"
+	help
+	  Say Y here, and a list of supported touchscreens will be displayed.
+	  This option doesn't affect the kernel.
+
+	  If unsure, say Y.
+
+if INPUT_TOUCHSCREEN
+
+config TOUCHSCREEN_MTK
+	bool "MediaTek Touch Panel Driver"
+	help
+	  Say Y here if you have MediaTek touch panel.
+
+	  If unsure, say N.
+
+	  To compile this dirver as a module, choose M here: the
+	  module will be called.
+
+config TOUCHSCREEN_MTK_GT1151
+	bool "GT1151 for Mediatek package"
+	default n
+	help
+	  Say Y here if you have GT1151 touch panel.
+
+	  If unsure, say N.
+
+	  To compile this dirver as a module, choose M here: the
+	  module will be called.
+
+source "drivers/input/touchscreen/mediatek/GT1151/Kconfig"
+
+config TOUCHSCREEN_MTK_GT917D
+	tristate "lct_gt917d Touchscreen"
+	help
+	  Say Y here if you have Goodix lct_gt917d touchscreen,
+	  connected to your system.
+	  If unsure, say N.
+	  To compile this driver as a module, choose M here.
+
+source "drivers/input/touchscreen/mediatek/lct_gt917d/Kconfig"
+
+config TOUCHSCREEN_MTK_GT917D_L3510
+	tristate "lct_gt917d_l3510 Touchscreen"
+	help
+	  Say Y here if you have Goodix lct_gt917d touchscreen,
+	  connected to your system.
+	  If unsure, say N.
+	  To compile this driver as a module, choose M here.
+
+source "drivers/input/touchscreen/mediatek/lct_gt917d_l3510/Kconfig"
+
+config TOUCHSCREEN_MTK_LCT_HX8527
+	tristate "MediaTek Touch Panel Driver"
+	default n
+	help
+	  Say Y here if you have MediaTek touch panel.
+
+	  If unsure, say N.
+
+	  To compile this dirver as a module, choose M here: the
+	  module will be called.
+
+source "drivers/input/touchscreen/mediatek/lct_hx8527/Kconfig"
+endif
